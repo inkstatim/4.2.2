@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 BASE_URL = "https://api.pomidor-stage.ru"
 
 AUTH_HEADERS = {
@@ -11,8 +13,8 @@ API_HEADERS = {
 }
 
 AUTH_DATA = {
-    "username": "mitatskni@gmail.com",
-    "password": "qwertyuio",
+    "username": os.getenv("Username"),
+    "password": os.getenv("Password"),
     "scope": "",
     "client_id": "",
     "client_secret": ""
