@@ -2,15 +2,15 @@
 name = "pomidor-api-tests"
 version = "0.1.0"
 description = "API автотесты для Pomidor Stage"
-authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 packages = [{ include = "tests" }]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-requests = "^2.31.0"
-pytest = "^8.0.0"
-faker = "^24.0.0"
+python = "^3.13.3"
+requests = "^2.32.3"
+pytest = "^8.3.5"
+faker = "^37.1.0"
+python-dotenv = "^1.1.0"
 
 [build-system]
 requires = ["poetry-core"]
