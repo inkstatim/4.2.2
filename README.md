@@ -7,6 +7,14 @@
 ```bash
 poetry install
 ```
+## ⚙️ Настройка переменных окружения
+
+Перед запуском тестов создайте `.env` или отредактируйте файл в корне проекта:
+
+```env
+USERNAME=your_email@gmail.com
+PASSWORD=your_password
+```
 
 ##  Запуск тестов
 
