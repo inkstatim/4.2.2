@@ -7,20 +7,26 @@
 ```bash
 poetry install
 ```
-## ⚙️ Настройка переменных окружения
 
-Перед запуском тестов создайте `.env` или отредактируйте файл в корне проекта:
-
-```env
-USERNAME=your_email@gmail.com
-PASSWORD=your_password
-```
-
-##  Запуск тестов
-
+##  🚀 Запуск тестов
+Без отчётности
 ```bash
 poetry run pytest -v
 ```
+С генерацией Allure-отчёта
+```bash
+poetry run pytest --alluredir=allure-results
+```
+Затем:
+```bash
+allure serve allure-results
+```
+❗ Убедитесь, что у вас установлен Allure CLI. Установка:
+
+macOS - [официальная инструкция](https://docs.qameta.io/allure/#_installing_a_commandline)
+
+Windows - [установка для Windows](https://docs.qameta.io/allure/#_installing_a_commandline)
+
 
 ## Структура проекта
 
