@@ -38,4 +38,7 @@ project/
 │   ├── conftest.py
 ├── config/
 │   └── constants.py
+├── .env
+├── pyproject.toml
+
 ```
