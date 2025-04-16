@@ -1,8 +1,19 @@
 import pytest
 from config.constants import BASE_URL
+import requests
 
 class TestItems:
     endpoint = f"{BASE_URL}/api/v1/items/"
+
+    def test_create_item_without_token(self):
+        data = {"title": "No auth", "description": "no token"}
+        response = requests.post(self.endpoint, json=data)
+        assert response.status_code == 401
+
+    def test_get_item_without_token(self):
+        response = requests.get(f"{self.endpoint}/1")
+        assert response.status_code == 404
+
 
     def test_create_item(self, item_data, auth_session):
         response = auth_session.post(self.endpoint, json=item_data)
