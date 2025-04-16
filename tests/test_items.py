@@ -1,20 +1,24 @@
 import pytest
 from config.constants import BASE_URL
 import requests
+import allure
 
+@allure.epic("Items")
 class TestItems:
     endpoint = f"{BASE_URL}/api/v1/items/"
 
+    @allure.title("Создание элемента без токена")
     def test_create_item_without_token(self):
         data = {"title": "No auth", "description": "no token"}
         response = requests.post(self.endpoint, json=data)
         assert response.status_code == 401
 
+    @allure.title("Получение элемента без токена")
     def test_get_item_without_token(self):
         response = requests.get(f"{self.endpoint}/1")
         assert response.status_code == 404
 
-
+    @allure.title("Создание элемента")
     def test_create_item(self, item_data, auth_session):
         response = auth_session.post(self.endpoint, json=item_data)
         assert response.status_code in (200, 201)
@@ -22,6 +26,7 @@ class TestItems:
         assert data.get("id") is not None
         assert data.get("title") == item_data["title"]
 
+    @allure.title("Получение списка элементов")
     def test_get_items(self, auth_session):
         response = auth_session.get(self.endpoint)
         assert response.status_code == 200
@@ -29,6 +34,7 @@ class TestItems:
         assert "data" in data and isinstance(data["data"], list)
         assert isinstance(data.get("count"), int)
 
+    @allure.title("Обновление элемента")
     def test_update_item(self, item_data, auth_session):
         create_resp = auth_session.post(self.endpoint, json=item_data)
         item_id = create_resp.json().get("id")
@@ -40,6 +46,7 @@ class TestItems:
         assert put_resp.status_code == 200
         assert put_resp.json().get("title") == "Updated title"
 
+    @allure.title("Удаление элемента")
     def test_delete_item(self, item_data, auth_session):
         create_resp = auth_session.post(self.endpoint, json=item_data)
         item_id = create_resp.json().get("id")
