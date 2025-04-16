@@ -6,11 +6,12 @@ readme = "README.md"
 packages = [{ include = "tests" }]
 
 [tool.poetry.dependencies]
-python = "^3.13.3"
+python = "^3.13.2"
 requests = "^2.32.3"
 pytest = "^8.3.5"
 faker = "^37.1.0"
 python-dotenv = "^1.1.0"
+allure-pytest = "^2.13.2"
 
 [build-system]
 requires = ["poetry-core"]
